@@ -1,16 +1,17 @@
 import { useState } from "react";
 import "./style.css";
 
-type FormData = {
-  price: number;
+type Props = {
+  onFilter: Function;
 }
 
+type FormData = {
+  minPrice?: number;
+  maxPrice?: number;
+}
+export default function Filter({ onFilter }: Props) {
 
-export default function Filter() {
-
-  const [formData, setFormData] = useState<FormData>({
-    price: 0
-  });
+  const [formData, setFormData] = useState<FormData>({});
 
   function handleChangFormData(event: any) {
     const name = event.target.name;
@@ -19,24 +20,31 @@ export default function Filter() {
     setFormData({ ...formData, [name]: value })
   }
 
+  function handleOnSubmit(event: any) {
+    event.preventDefault();
+    setFormData(formData)
+    //console.log(formData.minPrice || Number.MIN_VALUE)
+    //console.log(formData.maxPrice || Number.MAX_VALUE)
+  }
+
   return (
-    <form className="nav-container search-filter" >
+    <form onSubmit={handleOnSubmit} className="nav-container search-filter" >
 
 
       <input
         type="text"
-        name="price"
-        value={formData.price}
+        name="minPrice"
+        value={formData.minPrice || ""}
         onChange={handleChangFormData}
       />
 
       <input
         type="text"
-        name="price"
-        value={formData.price}
+        name="maxPrice"
+        value={formData.maxPrice || ""}
         onChange={handleChangFormData}
       />
-      <button>Filtrar</button>
+      <button type="submit">Filtrar</button>
 
     </form>
   );
