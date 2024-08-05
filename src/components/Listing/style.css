@@ -1,0 +1,29 @@
+
+
+
+.section-listing{
+    background-color: var(--des-color-bg-secondary);
+    height: 408px;
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+.box-result {
+  display: flex;
+  flex-direction: column;
+  width: 920px;
+  padding: 7px;
+  border: 1px solid var(--des-color-bg-primary);
+} 
+
+.title-product {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.price-product {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--des-color-bg-primary);
+}
+ 

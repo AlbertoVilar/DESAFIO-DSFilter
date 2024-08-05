@@ -1,0 +1,14 @@
+
+
+
+.dsc-header-client {
+    background-color: var(--des-color-bg-primary);
+    
+  }
+
+  .container-logo-menu {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    color: var(--des-color-font-tertiary);
+  }
