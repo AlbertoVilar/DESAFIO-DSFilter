@@ -1,51 +1,46 @@
 import { useState } from "react";
 import "./style.css";
+import { FormData } from "../../model/types";
+
+
 
 type Props = {
-  onFilter: Function;
+  onFilter: (data: FormData) => void;
 }
 
-type FormData = {
-  minPrice?: number;
-  maxPrice?: number;
-}
 export default function Filter({ onFilter }: Props) {
-
+  
   const [formData, setFormData] = useState<FormData>({});
 
-  function handleChangFormData(event: any) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const name = event.target.name;
     const value = event.target.value;
 
-    setFormData({ ...formData, [name]: value })
+    setFormData({ ...formData, [name]: value });
   }
 
-  function handleOnSubmit(event: any) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setFormData(formData)
-    //console.log(formData.minPrice || Number.MIN_VALUE)
-    //console.log(formData.maxPrice || Number.MAX_VALUE)
+    onFilter(formData); // Pass the formData object to onFilter
   }
 
   return (
-    <form onSubmit={handleOnSubmit} className="nav-container search-filter" >
-
-
+    <form onSubmit={handleSubmit} className="nav-container search-filter">
       <input
-        type="text"
+        type="number"
         name="minPrice"
         value={formData.minPrice || ""}
-        onChange={handleChangFormData}
+        onChange={handleChange}
+        placeholder="Min Price"
       />
-
       <input
-        type="text"
+        type="number"
         name="maxPrice"
         value={formData.maxPrice || ""}
-        onChange={handleChangFormData}
+        onChange={handleChange}
+        placeholder="Max Price"
       />
       <button type="submit">Filtrar</button>
-
     </form>
   );
 }
