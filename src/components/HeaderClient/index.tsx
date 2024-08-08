@@ -4,9 +4,8 @@ import { ContextProductCount } from "../../utils/contex-products";
 
 
 export default function HeaderClient() {
-
   const { contextProductCount } = useContext(ContextProductCount);
-  console.log(contextProductCount)
+
 
   return (
     <header className="dsc-header-client">

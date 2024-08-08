@@ -1,11 +1,16 @@
 import { ProductDTO } from "../../model/Products";
+
 import "./style.css";
 
-type Props = {
+type Data = {
   products: ProductDTO[];
 };
 
-export default function Listing({ products = [] }: Props) { // Define um valor padrão vazio
+
+
+export default function Listing({ products = [] }: Data ) { // Define um valor padrão vazio
+
+
   return (
     <div className="nav-container section-listing">
       {products.length === 0 ? (
